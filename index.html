@@ -361,6 +361,118 @@ section { position: relative; }
 }
 .section-title em { color: var(--fire); font-style: italic; }
 
+/* ─── VIDEO ─── */
+.video-section {
+  background: var(--char);
+  position: relative;
+  overflow: hidden;
+}
+.video-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(214,59,31,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 100%, rgba(200,146,42,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.video-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 90px 48px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.video-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.video-line { display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6; }
+.video-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+.video-title em { color: var(--fire); font-style: italic; }
+.video-subtitle {
+  font-size: 16px;
+  color: var(--light-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 40px;
+}
+.video-frame-wrap { width: 100%; }
+.video-frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(200,146,42,0.2);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(214,59,31,0.1);
+  margin-bottom: 24px;
+}
+.video-frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.video-cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.video-order-btn {
+  background: var(--fire);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+.video-order-btn:hover {
+  background: var(--ember);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214,59,31,0.4);
+}
+.video-yt-btn {
+  background: transparent;
+  color: var(--cream);
+  padding: 13px 32px;
+  border-radius: 2px;
+  border: 1px solid rgba(250,245,237,0.2);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+  display: inline-block;
+}
+.video-yt-btn:hover { border-color: var(--gold); color: var(--gold); }
+
 /* ─── ABOUT ─── */
 .about { background: var(--warm-white); }
 .about-grid {
@@ -970,6 +1082,7 @@ footer {
   .stat-num { font-size: 28px; }
 
   .section-inner { padding: 70px 24px; }
+  .video-inner { padding: 60px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .products-grid { grid-template-columns: 1fr 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
@@ -1043,6 +1156,34 @@ footer {
     <div class="stat">
       <span class="stat-num">∞</span>
       <span class="stat-label">Smiles Created</span>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section id="video" class="video-section">
+  <div class="video-inner">
+    <div class="video-eyebrow">
+      <span class="video-line"></span>
+      Watch Our Story
+      <span class="video-line"></span>
+    </div>
+    <h2 class="video-title">See the <em>Fire</em> Come Alive</h2>
+    <p class="video-subtitle">From a Toronto condo kitchen to your table — watch the story behind every bottle of Sakred Fire.</p>
+    <div class="video-frame-wrap">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/cIlxnNW5l1s?rel=0&modestbranding=1&color=white"
+          title="Sakred Fire — Toronto's All-Natural Hot Sauce Story"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-cta-row">
+        <a href="https://www.instagram.com/sakred.fire/" target="_blank" class="video-order-btn">🌶️ Order Your Bottle — $10</a>
+        <a href="https://www.youtube.com/watch?v=cIlxnNW5l1s" target="_blank" class="video-yt-btn">▶ Watch on YouTube</a>
+      </div>
     </div>
   </div>
 </section>
