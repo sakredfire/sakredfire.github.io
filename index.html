@@ -1562,12 +1562,20 @@ footer {
     const btn = document.querySelector('.popup-submit');
     btn.textContent = 'Joining...';
     btn.disabled = true;
-    fetch('https://formspree.io/f/mjgjrwqp', {
+    fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, _subject: 'New email list signup — Sakred Fire 🌶️', source: 'Website popup' })
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiOGQzNTc2NDk2MTNmNjAyY2YwMGM5NzgwZmRiOTc4OGYwOWVlMjYyYzFjNGIwMzBlZGVhNTVjNDY4MTIwMTliN2EzOWNjMDRiNjVhMmNjYzMiLCJpYXQiOjE3NzY1NDgwMDIuMzE1NjIxLCJuYmYiOjE3NzY1NDgwMDIuMzE1NjI1LCJleHAiOjQ5MzIyMjE2MDIuMzA3NTY2LCJzdWIiOiIyMjk2NjY2Iiwic2NvcGVzIjpbXX0.SHI8fIUpFMI5LYuuI_QBeejc3zs_fPzAjiOLdyG5kOvlMxMhPLsk-efzbMXDPWNhr2YaYTEutHB7wfz6UnsRLUJQdbgche_GuDrVKv1txMLVhKcqU-de1ZzavKIIq0olAZ6EAI3yhqQIHdOHBf7S9nde1WZlcSW8o_f26nDqln3xZ-s1OtksP2K7wpfkjJMyldyE22dAD7z1tnsE4jZ5tOg4nGj8Gapy4OsbCN0wAYRW_3Q99GZTCNFW1ObCA6v9FB29iP7xCTQyaFSmjBuMaw3X7guTtcLIc5VMNN1fx2QvZhvEviYjHBH7mk-36ovKxs7QgDCLnGNaUdcjQTJ7e3btlgfI_vITH-2UeGpDjYuirLithzPiWrSLPFSdAb1pf3qbUS68uLCErBsphjHNbBg846n6deJVM_Gnhx7zsfkLrs6EggEInvBOEYfw7VCRLj6sfkZyzTN6u2cFnFTp2LuE3UJS7UBts5ZIfrSOyQGq4VYaYtEDZ_xW4yHWTgJUZ7UZo440bEkUwi6cQ1KOQtCHkRN-arClF6_vZe7RcmYGJSHDv1wG8lDE9cXJgKIASHqsTVTCtkEszC1Rw21AJuF5utKVVPnfCytiuAfLWINXL_BjMLv066hcG8ZlQ_FenILR8aeoYU3aiLwa6ivq4UECdl5Lsrx-Ce7HRIemJlk'
+      },
+      body: JSON.stringify({
+        email: email,
+        fields: { source: 'Website popup — Sakred Fire' },
+        status: 'active'
+      })
     }).then(res => {
-      if (res.ok) {
+      if (res.ok || res.status === 201 || res.status === 200) {
         document.getElementById('emailPopup').innerHTML = `
           <div style="text-align:center;padding:10px 0;">
             <div style="font-size:36px;margin-bottom:12px;">🌶️</div>
